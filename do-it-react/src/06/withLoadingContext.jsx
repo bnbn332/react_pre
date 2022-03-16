@@ -1,5 +1,12 @@
+//소비자를 반환하는 하이어오더 컴포넌트
+
 import React from 'react';
 import PropTypes from 'prop-types';
+
+export const loadingPropTypes = {
+  loading: PropTypes.bool,
+  setLoading: PropTypes.func,
+};
 
 export default (WrappedComponent) => {
   const { displayName, name: componentName } = WrappedComponent;
