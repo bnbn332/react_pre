@@ -1,5 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ReduxApp from '../07/ReduxApp01';
+import ReduxApp01 from '../07/ReduxApp01';
+import ReduxApp02 from '../07/ReduxApp02';
+import ReduxApp03 from '../07/ReduxApp03';
 
-storiesOf('ReduxApp', module).addWithJSX('기본 스토어 설정', () => <ReduxApp />);
+storiesOf('ReduxApp', module)
+  .addWithJSX('기본 스토어 설정', () => <ReduxApp01 />)
+  .addWithJSX('기본 액션 호출', () => <ReduxApp02 />)
+  .addWithJSX('기본 리덕스 구현', () => <ReduxApp03 />);
