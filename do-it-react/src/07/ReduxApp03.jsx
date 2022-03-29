@@ -13,6 +13,17 @@ const reducer = (state, action) => {
         loading: payload,
       };
     }
+    case 'RESET_LOADING': {
+      //type이 RESET_LOADING인 경우 스토어 데이터의 loading값을 무조건 false로 변경합니다.
+      return { ...state, loading: false };
+    }
+    case 'SET_USER': {
+      //type이 SET_USER인 경우 PAYLOAD의 값으로 USER의 값을 변경
+      return {
+        ...state,
+        user: payload,
+      };
+    }
     default:
       return state;
   }
@@ -30,6 +41,12 @@ class ReduxApp extends PureComponent {
       //리덕스 스토어를 컴포넌트가 출력된 이후 변경하도록 액션 호출 함수 dispatch()를 실행
       type: 'SET_LOADING',
       payload: true,
+    });
+    this.store.dispatch({ type: 'RESET_LOADING ' }); //RESET_LOADING에 해당하는 액션 호출
+    this.store.dispatch({
+      //SET_USER에 해당하는 액션 호출
+      type: 'SET_USER',
+      payload: { name: 'PARK', age: 20 },
     });
   }
   render() {
