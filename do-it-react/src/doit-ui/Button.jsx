@@ -20,7 +20,7 @@ class Button extends PureComponent {
       onPress,
     } = this.props;
     return (
-      <Button
+      <button
         {...css(
           styles.default,
           xsmall && styles.xsmall,
@@ -36,7 +36,7 @@ class Button extends PureComponent {
         type={type}
       >
         {children}
-      </Button>
+      </button>
     );
   }
 }
