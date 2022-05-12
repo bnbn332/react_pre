@@ -1,3 +1,5 @@
+// card 컴포넌트 만들기
+
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, css, withStylesPropTypes } from './withStyles';
