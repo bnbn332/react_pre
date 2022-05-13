@@ -35,9 +35,9 @@ class TransactionSearchFilter extends PureComponent {
               </Text>
               <Select name="code" label="코인 코드" onChange={onChange} value={values['code']}>
                 <Option label="선택해주세요" />
-                <Option label="비트코인(BTX)" values="BTX" />
-                <Option label="이더리움(ETH)" values="ETH" />
-                <Option label="도지코인(DOG)" values="DOG" />
+                <Option label="비트코인(BTX)" value="BTX" />
+                <Option label="이더리움(ETH)" value="ETH" />
+                <Option label="도지코인(DOG)" value="DOG" />
               </Select>
               <Input
                 name="currentPrice_gte"
