@@ -3,26 +3,20 @@
 // 하단화면
 
 import React, { PureComponent } from 'react';
+import Api from '../../Api';
 import Heading from '../../../doit-ui/Heading';
 import Card from '../../../doit-ui/Card';
+
 import TransactionSearchFilter from './TransactionSearchFilter';
 import TransactionTable from './TransactionTable';
 
 class TransactionList extends PureComponent {
-  state = {
-    transactions: [
-      {
-        id: 'btx_01',
-        name: '비트코인(BTX)',
-        totalPrice: '123,123,000,000원',
-        currentPrice: '4,200,000원',
-        datetime: '2019/01/20 08:23:22',
-      },
-    ],
-  };
+  componentDidMount() {
+    Api.get('/transactions').then(({ data }) => this.props.setTransactionList(data));
+  }
 
   render() {
-    const { transactions } = this.state;
+    const { transactions } = this.props;
     return (
       <div>
         <Heading level={3}>거래 현황</Heading>
@@ -36,5 +30,10 @@ class TransactionList extends PureComponent {
     );
   }
 }
+
+TransactionList.defaultProps = {
+  transaction: [],
+  setTransactionList: () => {},
+};
 
 export default TransactionList;
