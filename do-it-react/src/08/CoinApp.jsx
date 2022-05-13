@@ -2,13 +2,13 @@
 
 import React, { PureComponent } from 'react';
 import AppLayout from './components/AppLayout';
-import CoinOverview from './components/main/CoinOverview';
+import MainPage from '../08/components/main/MainPage';
 
 class CoinApp extends PureComponent {
   render() {
     return (
       <AppLayout>
-        <CoinOverview />
+        <MainPage />
       </AppLayout>
     );
   }
