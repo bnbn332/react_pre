@@ -1,0 +1,28 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "code": "BTX",
+      "name": "비트코인(BTX)",
+      "totalPrice": 12391230000,
+      "currentPrice": 1020000,
+      "datetime": "2022/05/13 23:03:00"
+    },
+    {
+      "id": 2,
+      "code": "RXP",
+      "name": "리플(RXP)",
+      "totalPrice": 1230000,
+      "currentPrice": 20000,
+      "datetime": "2022/05/14 00:03:00"
+    },
+    {
+      "id": 3,
+      "code": "TEST",
+      "name": "테스트(TEST)",
+      "totalPrice": 1,
+      "currentPrice": 1,
+      "datetime": "1995/05/10 00:00:00"
+    }
+  ]
+}
