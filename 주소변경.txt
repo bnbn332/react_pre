@@ -1,2 +1,0 @@
-git remote set-url origin 주소
-git remote -v
