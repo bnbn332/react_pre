@@ -6,14 +6,16 @@ import Card from '../Card';
 import { css, withStyles } from '../withStyles';
 
 class Modal extends PureComponent {
-  renter() {
+  render() {
     const { styles, children } = this.props;
     return (
       <div {...css(styles.overlay)}>
         <div {...css(styles.wrapper)}>
-          <Card vertical={2} horizontal={2}>
-            {children}
-          </Card>
+          <div {...css(styles.container)}>
+            <Card vertical={2} horizontal={2}>
+              {children}
+            </Card>
+          </div>
         </div>
       </div>
     );
