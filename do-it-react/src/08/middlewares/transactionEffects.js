@@ -5,11 +5,12 @@ import { TRADE_COMPLETE, requestTransactionList } from '../actions/transactionAc
 import { showMessage } from '../actions/notificationActions';
 
 export default (store) => (nextRunner) => (action) => {
-  const { type, payload } = action;
+  const { type } = action;
   const result = nextRunner(action);
   if (type === TRADE_COMPLETE) {
-    const message = '거래 목록을 최신 정보로 업데이트 하였습니다.';
-    store.dispatch(showMessage(message)); // 알림 액션 함수(showMessage)를 호출하여 성공 메시지를 출력
-    store.dispatch(requestTransactionList()); // 액션 함수를 호출하여 새로운 거래 목록을 요청
+    const message = '거래 목록을 최신 정보로 업데이트하였습니다.';
+    store.dispatch(showMessage(message));
+    store.dispatch(requestTransactionList());
   }
+  return result;
 };

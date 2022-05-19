@@ -1,3 +1,5 @@
+// 거래화면
+
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Text from '../../../doit-ui/Text';
@@ -6,7 +8,7 @@ import Input from '../../../doit-ui/Input';
 import Button from '../../../doit-ui/Button';
 import InlineList from '../../../doit-ui/InlineList';
 import Form from '../../../doit-ui/Form';
-import { Consumer as Modal } from '../../../doit-ui/Modal/context';
+import { Consumer as Modal } from '../../../doit-ui/Modal/context'; // 모달 소비자의closeModal()함수를 사용
 
 class TradeCoinPage extends PureComponent {
   constructor(props) {
@@ -23,13 +25,13 @@ class TradeCoinPage extends PureComponent {
     createTransaction(formValues, closeModal);
   }
   render() {
-    const { name, price, type, loading } = this.props;
-    const typeName = type === 'sell' ? '판매' : '구매';
+    const { name, price, type } = this.props;
+    const typeName = type === 'sell' ? '판매' : '구매'; // type에 따라 판매와 구매화면을 구분
     return (
       <Modal>
         {({ closeModal }) => (
           <Form
-            onSubmit={(values) => this.handleSubmit(values, closeModal)}
+            onSubmit={(values) => this.handleSubmit(values, closeModal)} // From 컴포넌트의 onSubmit 프로퍼티로 전달한 handleSubmit() 콜백 함수의 인자로 values와 closeModal()함수를 전달
             initValues={{ currentPrice: price }}
           >
             <Form.Consumer>
@@ -55,12 +57,8 @@ class TradeCoinPage extends PureComponent {
                     />
                   </Spacing>
                   <InlineList spacingBetween={1}>
-                    <Button primary disabled={loading}>
-                      {loading ? '거래 처리중' : typeName}
-                    </Button>
-                    <Button onPress={closeModal} disabled={loading}>
-                      취소
-                    </Button>
+                    <Button primary>{typeName}</Button>
+                    <Button onPress={closeModal}>취소</Button>
                   </InlineList>
                 </Spacing>
               )}
