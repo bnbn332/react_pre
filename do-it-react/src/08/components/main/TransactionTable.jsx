@@ -1,5 +1,6 @@
 // TransactionTable 컴포넌트 만들기
 // 검색결과
+// loading 화면에 표시하기
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
@@ -8,6 +9,16 @@ import TableRow from '../../../doit-ui/TableRow';
 import TableCell from '../../../doit-ui/TableCell';
 import TableHead from '../../../doit-ui/TableHead';
 import TableBody from '../../../doit-ui/TableBody';
+
+import Text from '../../../doit-ui/Text';
+import Spacing from '../../../doit-ui/Spacing';
+import withLoading from '../../../05/withLoading';
+
+const LoadingMessage = (
+  <Spacing vertical={4} horizontal={2}>
+    <Text large>데이터를 불러들이고 있습니다.</Text>
+  </Spacing>
+);
 
 class TransactionTable extends PureComponent {
   render() {
@@ -49,4 +60,4 @@ TransactionTable.propTypes = {
   ),
 };
 
-export default TransactionTable;
+export default withLoading(LoadingMessage)(TransactionTable);

@@ -5,12 +5,15 @@
 // 2개의 미들웨어 조합하여 리덕스에 등록하기
 // 다중 미들웨어와 리덕스 크롬 확장 도구 조합
 // redux-thunk 미들웨어 추가하기
+// notificationEffects 추가
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from '../reducers';
 import { SET_TRANSACTION_LIST } from '../actions/transactionActions';
 import thunk from 'redux-thunk';
+import notificationEffects from '../middlewares/notificationEffects';
+import transactionEffects from '../middlewares/transactionEffects';
 
 const customMiddleware = (store) => (nextRunner) => (action) => {
   console.log('액션 객체', action); // nextRunner() 함수 이전에 실행할 작업 1
@@ -62,5 +65,5 @@ export default (initStates) =>
     /*composeWithDevTools(
       applyMiddleware(customMiddleware2, customMiddleware3), // 순서 1 -> 2 -> 3(다음미들웨어 실행) -> 6 -> 7 -> 8 -> 리듀서 실행 -> 9- > 10(이전미들웨어로 돌아감) -> 4 -> 5
     ),*/
-    composeWithDevTools(applyMiddleware(thunk)),
+    composeWithDevTools(applyMiddleware(thunk, notificationEffects, transactionEffects)),
   );

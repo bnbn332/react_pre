@@ -2,6 +2,7 @@
 // 검색 결과를 확인하기 위해 state에 임의의 transactions배열을 정의하여 프로퍼티로 전달하였음.
 // 하단화면
 // 액션 함수로 호출
+// TransactionList 컴포넌트에 loading 프로퍼티 전달
 
 import React, { PureComponent } from 'react';
 //import Api from '../../Api';
@@ -19,7 +20,7 @@ class TransactionList extends PureComponent {
   }
 
   render() {
-    const { transactions } = this.props;
+    const { transactions, loading } = this.props;
     return (
       <div>
         <Heading level={3}>거래 현황</Heading>
@@ -27,7 +28,7 @@ class TransactionList extends PureComponent {
           <TransactionSearchFilterContainer />
         </Card>
         <Card>
-          <TransactionTable transactions={transactions} />
+          <TransactionTable transactions={transactions} isLoading={loading} />
         </Card>
       </div>
     );
