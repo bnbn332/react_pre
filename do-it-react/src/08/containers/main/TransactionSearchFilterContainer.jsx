@@ -3,7 +3,8 @@
 
 import { connect } from 'react-redux';
 import TransactionSearchFilter from '../../components/main/TransactionSearchFilter';
-import { requestTransactionList } from '../../actions/transactionActions';
+//import { requestTransactionList } from '../../actions/transactionActions';
+import { requestTransactionList } from '../../actions/transactionPackActions';
 
 //export default connect(null, { setTransactionList })(TransactionSearchFilter); // 액션만 전달 예정이므로 첫 번쨰 인자에 null 전달
 
