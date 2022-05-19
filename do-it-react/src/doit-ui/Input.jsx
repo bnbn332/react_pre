@@ -1,5 +1,3 @@
-// Input 컴포넌트 추가
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, css, withStylesPropTypes } from './withStyles';
@@ -13,7 +11,7 @@ class Input extends PureComponent {
   handleChange(e) {
     const { name, onChange } = this.props;
     if (onChange) {
-      onChange(name, e.target.value);
+      onChange(name, e.target.value)
     }
   }
   componentDidMount() {
@@ -25,12 +23,28 @@ class Input extends PureComponent {
     this.ref = ref;
   }
   render() {
-    const { errorMessage, label, value, name, type, styles, large, xlarge, small, xsmall } =
-      this.props;
+    const {
+      errorMessage,
+      label,
+      value,
+      name,
+      type,
+      styles,
+      large,
+      xlarge,
+      small,
+      xsmall,
+    } = this.props;
 
     return (
       <fieldset {...css(styles.wrapper)}>
-        <label htmlFor={`input_${name}`} {...css(styles.label, errorMessage && styles.errorLabel)}>
+        <label
+          htmlFor={`input_${name}`}
+          {...css(
+            styles.label,
+            errorMessage && styles.errorLabel,
+          )}
+        >
           {errorMessage || label}
         </label>
         <input

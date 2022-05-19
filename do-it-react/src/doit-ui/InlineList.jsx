@@ -1,8 +1,7 @@
-// 가로 배치를 위한 컴포넌트
-
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles, css, withStylesPropTypes } from './withStyles';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { withStyles, css, withStylesPropTypes } from "./withStyles";
+import { propTypes as spacingPropTypes } from "./Spacing";
 import { unit } from './Theme';
 
 class InlineList extends PureComponent {
@@ -11,15 +10,15 @@ class InlineList extends PureComponent {
     return (
       <div
         {...css(
-          styles.wrapper, // withStyles의 wrapper 속성으로 가로 배치를 위한 속성 적용
-          align === 'center' && styles.alignCenter, // align 프로퍼티값이 center이면 하위 요소를 가운데 정렬
-          align === 'right' && styles.alignRight, // align 프로퍼티값이 right이면 하위 요소를 오른쪽 정렬
-          verticalAlign === 'top' && styles.verticalAlignTop, // verticalAlign 프로퍼티값이 top이면 하위요소의 내용을 위로 정렬
-          verticalAlign === 'bottom' && styles.verticalAlignBottom, // verticalAlign 프로퍼티값이 bottom이면 하위요소의 내용을 아래로 정렬
+          styles.wrapper,
+          align === 'center' && styles.alignCenter,
+          align === 'right' && styles.alignRight,
+          verticalAlign === 'top' && styles.verticalAlignTop,
+          verticalAlign === 'bottom' && styles.verticalAlignBottom,
         )}
       >
-        {React.Children.map(children, (child) => (
-          <div {...css({ marginRight: spacingBetween * unit })}>{child}</div> // spacingBetween 프로퍼티값에 unit을 곱한 만큼 하위 요소의 간격을 조정
+        {React.Children.map(children, child => (
+          <div {...css({ marginRight: spacingBetween * unit })}>{child}</div>
         ))}
       </div>
     );
@@ -27,10 +26,11 @@ class InlineList extends PureComponent {
 }
 
 InlineList.propTypes = {
+  ...spacingPropTypes,
   ...withStylesPropTypes,
   align: PropTypes.oneOf(['left', 'center', 'right']),
   verticalAlign: PropTypes.oneOf(['top', 'middle', 'bottom']),
-  spcingBetween: PropTypes.number,
+  spacingBetween: PropTypes.number,
   children: PropTypes.node,
 };
 
@@ -40,22 +40,22 @@ InlineList.defaultProps = {
 
 export default withStyles(() => ({
   wrapper: {
-    display: 'flex', // withStyles의 wrapper 속성으로 가로 배치를 위한 속성 적용
-    flexDirection: 'row', // withStyles의 wrapper 속성으로 가로 배치를 위한 속성 적용
-    flexWrap: 'wrap', // flexWrap의 속성을 wrap으로 설정하면 화면 밖의 하위 요소를 아래로 밀어 배치
-    justifyContent: 'fles-start', // justifyContent의 속성을 flex-start로 설정하면 하위 요소를 왼쪽부터 배치
-    alignItems: 'center', // alignItems의 속성을 center로 설정하면 하위 요소를 상하 가운데 정렬
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   alignCenter: {
-    justifyContent: 'center', // align 프로퍼티값이 center이면 하위 요소를 가운데 정렬
+    justifyContent: 'center',
   },
   alignRight: {
-    justifyContent: 'flex-end', // align 프로퍼티값이 right이면 하위 요소를 오른쪽 정렬
+    justifyContent: 'flex-end',
   },
   verticalAlignTop: {
-    alignItems: 'flex-start', // verticalAlign 프로퍼티값이 top이면 하위요소의 내용을 위로 정렬
+    alignItems: 'flex-start',
   },
   verticalAlignBottom: {
-    alignItems: 'flex-end', // verticalAlign 프로퍼티값이 bottom이면 하위요소의 내용을 아래로 정렬
+    alignItems: 'flex-end',
   },
 }))(InlineList);

@@ -1,12 +1,9 @@
-// Select 컴포넌트 만들기
-// 자식 프로퍼티로 Option 컴포넌트를 출력하도록 만듬
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, css, withStylesPropTypes } from './withStyles';
 import Option from './Option';
 
-export { Option }; // Select 컴포넌트는 대부분 Option 컴포넌트를 포함하고 있으므로, Select 컴포넌트를 임포트할 때 Option 컴포넌트를 함께 참조할 수 있도록 Option 컴포넌트를 익스포트
+export { Option };
 
 class Select extends PureComponent {
   constructor(props) {
@@ -16,7 +13,7 @@ class Select extends PureComponent {
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.state = {
-      focused: false,
+      focused: false
     };
   }
   handleFocus() {
@@ -51,13 +48,16 @@ class Select extends PureComponent {
       large,
       xlarge,
       small,
-      xsmall,
+      xsmall
     } = this.props;
     const { focused } = this.state;
 
     return (
       <fieldset {...css(styles.wrapper)}>
-        <label htmlFor={`input_${name}`} {...css(styles.label, errorMessage && styles.errorLabel)}>
+        <label
+          htmlFor={`input_${name}`}
+          {...css(styles.label, errorMessage && styles.errorLabel)}
+        >
           {errorMessage || label}
         </label>
         <div
@@ -68,7 +68,7 @@ class Select extends PureComponent {
             large && styles.largePadding,
             xlarge && styles.xlargePadding,
             focused && styles.focus,
-            errorMessage && styles.error,
+            errorMessage && styles.error
           )}
         >
           <select
@@ -77,7 +77,7 @@ class Select extends PureComponent {
               xsmall && styles.xsmall,
               small && styles.small,
               large && styles.large,
-              xlarge && styles.xlarge,
+              xlarge && styles.xlarge
             )}
             disabled={disabled}
             id={`input_${name}`}
@@ -87,7 +87,9 @@ class Select extends PureComponent {
             onBlur={this.handleBlur}
             value={value}
           >
-            {React.Children.map(children, (child) => React.cloneElement(child, { disabled }))}
+            {React.Children.map(children, child =>
+              React.cloneElement(child, { disabled })
+            )}
           </select>
         </div>
       </fieldset>
@@ -102,26 +104,26 @@ Select.propTypes = {
   errorMessage: PropTypes.string,
   label: PropTypes.string,
   onChange: PropTypes.func,
-  autoFocus: PropTypes.bool,
+  autoFocus: PropTypes.bool
 };
 
 Select.defaultProps = {
   onChange: () => {},
-  autoFocus: false,
+  autoFocus: false
 };
 
 export default withStyles(({ depth, unit, color, size, lineHeight }) => ({
   wrapper: {
     border: 0,
     padding: 0,
-    position: 'relative',
+    position: 'relative'
   },
   label: {
     display: 'block',
     fontSize: size.xs,
     top: 2,
     left: unit * 2,
-    cursor: 'pointer',
+    cursor: 'pointer'
   },
   placeholder: {
     marginTop: 2,
@@ -129,19 +131,19 @@ export default withStyles(({ depth, unit, color, size, lineHeight }) => ({
     borderColor: color.primary,
     borderStyle: 'solid',
     borderRadius: 4,
-    padding: unit * 1.5,
+    padding: unit * 1.5
   },
   focus: {
-    boxShadow: '0 0 0px 2px rgba(0, 0, 0, 0.3)',
+    boxShadow: '0 0 0px 2px rgba(0, 0, 0, 0.3)'
   },
   xlargePadding: {
-    padding: unit * 2,
+    padding: unit * 2
   },
   largePadding: {
-    padding: unit * 2,
+    padding: unit * 2
   },
   smallPadding: {
-    padding: unit - 1,
+    padding: unit - 1
   },
   select: {
     fontSize: size.md,
@@ -149,21 +151,21 @@ export default withStyles(({ depth, unit, color, size, lineHeight }) => ({
     backgroundColor: color.white,
     border: 0,
     outline: 0,
-    width: '100%',
+    width: '100%'
   },
   xlarge: {
-    fontSize: size.xg,
+    fontSize: size.xg
   },
   large: {
-    fontSize: size.lg,
+    fontSize: size.lg
   },
   small: {
-    fontSize: size.sm,
+    fontSize: size.sm
   },
   errorLabel: {
-    color: color.error,
+    color: color.error
   },
   error: {
-    borderColor: color.error,
-  },
+    borderColor: color.error
+  }
 }))(Select);

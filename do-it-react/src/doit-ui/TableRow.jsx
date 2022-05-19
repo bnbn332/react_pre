@@ -1,6 +1,3 @@
-// TableRow 컴포넌트 만들기
-// TableRow 컴포넌트는 TableHead, TableBody 컴포넌트에서 전달받은 isHeader, baseline 프로퍼티를 자식 컴포넌트에 그대로 전달
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,7 +7,9 @@ class TableRow extends PureComponent {
 
     return (
       <tr>
-        {React.Children.map(children, (child) => React.cloneElement(child, { baseline, isHeader }))}
+        {React.Children.map(children, child =>
+          React.cloneElement(child, { baseline, isHeader })
+        )}
       </tr>
     );
   }
@@ -19,7 +18,7 @@ class TableRow extends PureComponent {
 TableRow.propTypes = {
   children: PropTypes.node,
   baseline: PropTypes.bool,
-  isHeader: PropTypes.bool,
+  isHeader: PropTypes.bool
 };
 
 export default TableRow;

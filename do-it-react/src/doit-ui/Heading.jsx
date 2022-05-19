@@ -1,19 +1,27 @@
-//Heading 컴포넌트 만들기
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, css } from './withStyles';
-
 const headingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 class Heading extends PureComponent {
   render() {
-    const { children, inverse, level, styles } = this.props;
+    const {
+      children,
+      inverse,
+      level,
+      styles,
+    } = this.props;
 
     const HeadingTag = headingTags[level - 1];
 
     return (
-      <HeadingTag {...css(styles.default, styles[`level${level}`], inverse && styles.inverse)}>
+      <HeadingTag
+        {...css(
+          styles.default,
+          styles[`level${level}`],
+          inverse && styles.inverse,
+        )}
+      >
         {children}
       </HeadingTag>
     );
@@ -29,7 +37,13 @@ Heading.defaultProps = {
   level: 1,
 };
 
-export default withStyles(({ color, fontWeight, size, lineHeight, unit }) => ({
+export default withStyles(({
+  color,
+  fontWeight,
+  size,
+  lineHeight,
+  unit,
+}) => ({
   default: {
     lineHeight: lineHeight.lg,
     fontWeight: fontWeight.bold,

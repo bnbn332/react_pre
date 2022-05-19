@@ -3,12 +3,48 @@ import PropTypes from 'prop-types';
 import { withStyles, css, withStylesPropTypes } from './withStyles';
 import Spacing from './Spacing';
 import Text from './Text';
+import { debounce } from '../02/debounce';
 
-class Toast extends PureComponent {
+class AutoHideToast extends PureComponent {
+  static getDerivedStateFromProps({ message }, state) {
+    if (message !== state.prevMessage) {
+      return {
+        message,
+        prevMessage: message,
+      }
+    }
+    return state;
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.hideMessage = debounce(this.hideMessage.bind(this), 4000);
+  }
+
+  hideMessage() {
+    if (!this._unmounted) {
+      this.setState({ message: '' });
+    }
+  }
+
+  componentDidMount() {
+    this.hideMessage();
+  }
+
+  componentDidUpdate() {
+    this.hideMessage();
+  }
+
+  componentWillUnmount() {
+    this._unmounted = true;
+  }
+
   render() {
-    const { message, styles, warning } = this.props;
+    const { styles, warning } = this.props;
+    const { message } = this.state;
 
-    return (
+    return message && (
       <div {...css(styles.overlay)}>
         <div {...css(styles.wrapper, warning && styles.warning)}>
           <Spacing vertical={4} horizontal={8}>
@@ -22,7 +58,7 @@ class Toast extends PureComponent {
   }
 }
 
-Toast.propTypes = {
+AutoHideToast.propTypes = {
   ...withStylesPropTypes,
   warning: PropTypes.bool,
   message: PropTypes.string,
@@ -48,4 +84,4 @@ export default withStyles(({ depth, unit, color }) => ({
   warning: {
     backgroundColor: color.error,
   },
-}))(Toast);
+}))(AutoHideToast);

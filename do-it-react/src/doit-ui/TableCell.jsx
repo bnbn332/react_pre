@@ -1,7 +1,3 @@
-// TableCell 컴포넌트 만들기
-// TableCell 컴포넌트는 테이블의 열에 해당하므로 td 엘리먼트 또는 th 엘리먼트를 출력한다.
-// isHeader 프로퍼티가 true이면 th를 false이면 td를 출력
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, css, withStylesPropTypes } from './withStyles';
@@ -46,14 +42,14 @@ export default withStyles(({ color, unit }) => ({
     paddingRight: unit * 8,
     paddingLeft: unit * 8,
     backgroundColor: color.white,
-    textAlign: 'left',
+    textAlign: 'left'
   },
   header: {
     backgroundColor: color.primary,
-    color: color.white,
+    color: color.white
   },
   baseline: {
-    borderBottom: `1px solid ${color.border}`,
+    borderBottom: `1px solid ${color.border}`
   },
   alignCenter: {
     textAlign: 'center',

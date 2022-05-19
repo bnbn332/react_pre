@@ -1,5 +1,3 @@
-// Text 컴포넌트 만들기
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, css } from './withStyles';
@@ -23,7 +21,6 @@ class Text extends PureComponent {
       <span
         {...css(
           styles.default,
-          xsmall && styles.xsmall,
           xsmall && styles.xsmall,
           small && styles.small,
           large && styles.large,
@@ -54,7 +51,12 @@ Text.propTypes = {
   inverse: PropTypes.bool,
 };
 
-export default withStyles(({ color, fontWeight, size, lineHeight }) => ({
+export default withStyles(({
+  color,
+  fontWeight,
+  size,
+  lineHeight,
+}) => ({
   default: {
     color: color.default,
     fontSize: size.md,

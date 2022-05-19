@@ -1,5 +1,3 @@
-// Form 컴포넌트 만들기
-
 import React from 'react';
 import PropTypes from 'prop-types';
 

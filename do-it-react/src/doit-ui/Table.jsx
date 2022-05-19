@@ -1,5 +1,3 @@
-// Table 컴포넌트 작성
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, css, withStylesPropTypes } from './withStyles';
@@ -7,7 +5,11 @@ import { withStyles, css, withStylesPropTypes } from './withStyles';
 class Table extends PureComponent {
   render() {
     const { styles, children } = this.props;
-    return <table {...css(styles.table)}>{children}</table>;
+    return (
+      <table {...css(styles.table)}>
+        {children}
+      </table>
+    );
   }
 }
 

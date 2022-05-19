@@ -1,5 +1,3 @@
-// Card 컴포넌트와 함께 둥근 모서리 표현하기
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Card';

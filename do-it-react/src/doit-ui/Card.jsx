@@ -1,5 +1,3 @@
-// card 컴포넌트 만들기
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, css, withStylesPropTypes } from './withStyles';
@@ -10,7 +8,9 @@ class Card extends PureComponent {
     const { children, styles, ...spacingProps } = this.props;
     return (
       <div {...css(styles.wrapper)}>
-        <Spacing {...spacingProps}>{children}</Spacing>
+        <Spacing {...spacingProps}>
+          {children}
+        </Spacing>
       </div>
     );
   }

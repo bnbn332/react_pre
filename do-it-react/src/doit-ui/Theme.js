@@ -1,25 +1,21 @@
-// 스타일 전체의 색상 및 규격을 관리하기 위한 파일
-
 export const LARGE_AND_ABOVE = 'largeAndAbove';
-
-const BREAKPOINT_NAME = {
+const BREAKPOINT_NAMES = {
   LARGE: 'large',
   MEDIUM: 'medium',
   SMALL: 'small',
 };
 
 const breakpoints = {
-  [BREAKPOINT_NAME.LARGE]: 1128,
-  [BREAKPOINT_NAME.MEDIUM]: 744,
-  [BREAKPOINT_NAME.SMALL]: 327,
+  [BREAKPOINT_NAMES.LARGE]: 1128,
+  [BREAKPOINT_NAMES.MEDIUM]: 744,
+  [BREAKPOINT_NAMES.SMALL]: 327,
 };
 
 const responsive = {
-  [LARGE_AND_ABOVE]: `@media (min-width: ${breakpoints[BREAKPOINT_NAME.LARGE]}px)`,
-  [BREAKPOINT_NAME.SMALL]: `@media (max-width: ${breakpoints[BREAKPOINT_NAME.MEDIUM] - 1}px)`,
+  [LARGE_AND_ABOVE]: `@media (min-width: ${breakpoints[BREAKPOINT_NAMES.LARGE]}px)`,
+  [BREAKPOINT_NAMES.SMALL]: `@media (max-width: ${breakpoints[BREAKPOINT_NAMES.MEDIUM] - 1}px)`,
   print: '@media print',
 };
-
 export const unit = 4;
 
 export default {
@@ -30,7 +26,7 @@ export default {
     secondary: '#009688', // 부 색상
     secondaryDark: '#00796b',
     white: '#FFFFFF',
-    gray: '9e9e9e',
+    gray: '#9e9e9e',
     grayLight: '#eeeeee',
     grayDark: '#616161',
     border: 'rgba(0, 0, 0, .15)',
@@ -68,10 +64,10 @@ export default {
       boxShadow: '0 4px 5px 0 rgba(0, 0, 0, 0.14)',
     },
     level3: {
-      boxShadow: '0 8px 7px 12px rgba(0, 0, 0, 0.14)',
+      boxShadow: '0 8px 17px 12px rgba(0, 0, 0, 0.14)',
     },
   },
-  // 길이단위
+  // 길이 단위
   unit,
   // 반응형 미디어 속성
   responsive,

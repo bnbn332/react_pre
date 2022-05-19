@@ -1,5 +1,3 @@
-// ModalProvider 생성 함수 추가
-
 import React, { PureComponent } from 'react';
 import Modal from '../Modal'; // 혹은 import Modal from './index';
 
@@ -9,7 +7,7 @@ export default function createModalProvider(ContentMap = {}) {
   return class ModalProvider extends PureComponent {
     constructor(props) {
       super(props);
-
+  
       this.state = { showModal: false };
       this.handleClose = this.handleClose.bind(this);
       this.handleOpen = this.handleOpen.bind(this);
@@ -29,7 +27,7 @@ export default function createModalProvider(ContentMap = {}) {
       const { children } = this.props;
       const { showModal } = this.state;
       const ModalContent = ContentMap[this.contentId];
-
+  
       return (
         <Provider
           value={{
@@ -46,5 +44,5 @@ export default function createModalProvider(ContentMap = {}) {
         </Provider>
       );
     }
-  };
+  };  
 }
