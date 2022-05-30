@@ -5,23 +5,30 @@
 
 import { connect } from 'react-redux';
 import TransactionList from '../../components/main/TransactionList';
-//import { setTransactionList } from '../../actions/transactionActions';
-//import { requestTransactionList } from '../../actions/transactionActions';
-import {
-  requestTransactionList,
-  FETCH_TRANSACTION_LIST,
-} from '../../actions/transactionPackActions';
+// import { setTransactionList } from '../../actions/transactionActions';
+// import { requestTransactionList } from '../../actions/transactionActions';
+import { requestTransactionList } from '../../actions/transactionPackActions';
 import {
   transactionListSelector,
-  loadingStateSelector,
+  transactionListLoadingStateSelector,
 } from '../../selectors/transactionSelectors';
 
-const mapStateToProps = (state) => {
-  return { transactions: transactionListSelector(state), loading: loadingStateSelector(state) };
-};
+// const mapStateToProps = state => {
+//   // const { ids, entities, loadingState, pages, pagination } = state.transactions;
+//   // const transactions = ids.map(id => entities[id]);
+//   const { pagination } = state.transactions;
+//   const transactions = transactionListSelector(state);
+//   const loading = transactionListLoadingStateSelector(state);
+//   const { number = 1 } = pagination;
+//   return { transactions, loading: loading && number === 1 };
+// };
+
+const mapStateToProps = (state) => ({
+  transactions: transactionListSelector(state),
+  loading: transactionListLoadingStateSelector(state),
+});
 
 const mapDispatchToProps = {
-  //setTransactionList,
   requestTransactionList,
 };
 
