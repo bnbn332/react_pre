@@ -4,13 +4,15 @@
 
 import React, { PureComponent } from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import AppLayout from './components/AppLayout';
-import MainPage from '../08/components/main/MainPage';
-import configureStore from './store/configureStore';
-import ModalProvider from './ModalProvider';
+import MainPage from './components/main/MainPage';
+import NotFound from './components/NotFound';
 import CoinOverview from './components/main/CoinOverview';
 import TransactionListContainer from './containers/main/TransactionListContainer';
-//import NotificationContainer from './containers/main/NotificationContainer';
+import configureStore from './store/configureStore';
+import ModalProvider from './ModalProvider';
 import NotificationContainer from './containers/NotificationContainer';
 
 class CoinApp extends PureComponent {
@@ -19,13 +21,17 @@ class CoinApp extends PureComponent {
   render() {
     return (
       <Provider store={this.store}>
-        <ModalProvider>
-          <AppLayout>
-            <CoinOverview />
-            <TransactionListContainer />
-            <NotificationContainer />
-          </AppLayout>
-        </ModalProvider>
+        <Router>
+          <ModalProvider>
+            <AppLayout>
+              <Switch>
+                <Route path="/" exact render={() => <MainPage />} />
+                <Route path="*" component={NotFound} />
+              </Switch>
+              <NotificationContainer />
+            </AppLayout>
+          </ModalProvider>
+        </Router>
       </Provider>
     );
   }
