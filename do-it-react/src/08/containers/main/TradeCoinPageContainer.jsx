@@ -3,6 +3,12 @@
 import { connect } from 'react-redux';
 import TradeCoinPage from '../../components/main/TradeCoinPage';
 //import { createTransaction } from '../../actions/transactionActions';
-import { createTransaction } from '../../actions/transactionPackActions';
+import { createTransaction, CREATE_TRANSACTION } from '../../actions/transactionPackActions';
 
-export default connect(null, { createTransaction })(TradeCoinPage);
+const mapStateToProps = (state) => {
+  const { loadingState } = state.transactions;
+  const loading = loadingState[CREATE_TRANSACTION];
+  return { loading };
+};
+
+export default connect(mapStateToProps, { createTransaction })(TradeCoinPage);

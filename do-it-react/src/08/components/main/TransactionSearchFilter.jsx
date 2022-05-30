@@ -4,6 +4,7 @@
 // 검색 필터
 // onSubmit 프로퍼티로 전달 받은 콜백 함수는 Form 컴포넌트에서 전달받은 handleSubmit 콜백함수이다. handleSubmit 콜백 함수의 인자로 전달한 values의 구조는 params에 넘겨줄 값의 구조와 같으므로 바로 대입가능
 // 객체 빈 값을 제외하는 방법 적용
+// setFilter 액션 함수가 동작할 수 있게 수정
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
@@ -24,11 +25,12 @@ class TransactionSearchFilter extends PureComponent {
   handleSubmit(params) {
     //const { setTransactionList } = this.props;
     //Api.get('/transactions', { params }).then(({ data }) => setTransactionList(data));
-    const { requestTransactionList } = this.props;
+    const { requestTransactionList, setFilter } = this.props;
     const cleanedParams = Object.entries(params)
       .filter(([key, value]) => value != '')
       .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});
     requestTransactionList(cleanedParams);
+    setFilter(cleanedParams);
   }
   render() {
     return (
@@ -69,6 +71,7 @@ class TransactionSearchFilter extends PureComponent {
 }
 
 //TransactionSearchFilter.propTypes = { setTransactionList: PropTypes.func };
+TransactionSearchFilter.propTypes = { setFilter: PropTypes.func };
 TransactionSearchFilter.propTypes = { requestTransactionList: PropTypes.func };
 
 export default TransactionSearchFilter;
