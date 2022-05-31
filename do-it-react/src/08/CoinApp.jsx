@@ -14,6 +14,7 @@ import TransactionListContainer from './containers/main/TransactionListContainer
 import configureStore from './store/configureStore';
 import ModalProvider from './ModalProvider';
 import NotificationContainer from './containers/NotificationContainer';
+import RouterStateContainer from './containers/RouterStateContainer';
 
 class CoinApp extends PureComponent {
   store = configureStore();
@@ -22,6 +23,7 @@ class CoinApp extends PureComponent {
     return (
       <Provider store={this.store}>
         <Router>
+          <RouterStateContainer />
           <ModalProvider>
             <AppLayout>
               <Switch>

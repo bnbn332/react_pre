@@ -16,6 +16,8 @@ import thunk from 'redux-thunk';
 import notificationEffects from '../middlewares/notificationEffects';
 import transactionEffects from '../middlewares/transactionEffects';
 import { middleware as reduxPackMiddleware } from 'redux-pack';
+import searchFilterEffects from '../middlewares/searchFilterEffects';
+import routerEffects from '../middlewares/routerEffects';
 
 const customMiddleware = (store) => (nextRunner) => (action) => {
   console.log('액션 객체', action); // nextRunner() 함수 이전에 실행할 작업 1
@@ -68,6 +70,12 @@ export default (initStates) =>
       applyMiddleware(customMiddleware2, customMiddleware3), // 순서 1 -> 2 -> 3(다음미들웨어 실행) -> 6 -> 7 -> 8 -> 리듀서 실행 -> 9- > 10(이전미들웨어로 돌아감) -> 4 -> 5
     ),*/
     composeWithDevTools(
-      applyMiddleware(thunk, reduxPackMiddleware, notificationEffects, transactionEffects),
+      applyMiddleware(
+        thunk,
+        reduxPackMiddleware,
+        notificationEffects,
+        searchFilterEffects,
+        routerEffects,
+      ),
     ),
   );

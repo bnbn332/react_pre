@@ -15,11 +15,6 @@ import TransactionTable from './TransactionTable';
 import TransactionPaginationContainer from '../../containers/main/TransactionPaginationContainer';
 
 class TransactionList extends PureComponent {
-  componentDidMount() {
-    //Api.get('/transactions').then(({ data }) => this.props.setTransactionList(data));
-    this.props.requestTransactionList();
-  }
-
   render() {
     const { transactions, loading } = this.props;
     return (

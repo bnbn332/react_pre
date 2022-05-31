@@ -9,4 +9,8 @@ import { setFilter } from '../../actions/searchFilterActions'; // 검색 정보 
 
 //export default connect(null, { setTransactionList })(TransactionSearchFilter); // 액션만 전달 예정이므로 첫 번쨰 인자에 null 전달
 
-export default connect(null, { requestTransactionList, setFilter })(TransactionSearchFilter);
+const mapStateToProps = (state) => ({
+  initValues: state.searchFilter.params,
+});
+
+export default connect(mapStateToProps)(TransactionSearchFilter);
